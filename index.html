@@ -44,7 +44,6 @@
       z-index: 10;
     }
     
-    /* The Gold Ring */
     .gold-ring {
       position: relative;
       width: 220px; height: 220px; border-radius: 50%;
@@ -62,7 +61,6 @@
       transform-origin: center center;
     }
 
-    /* The Realistic Physics Knife */
     #knife {
       position: absolute; left: 50%; top: 0;
       width: 70px; height: 260px;
@@ -111,7 +109,6 @@
       box-shadow: 0 2px 4px rgba(0,0,0,0.7);
     }
 
-    /* Trail, Shadow, Dust, Sparks, Crab Explosion */
     #trail {
       position: absolute; left: 50%; top: 0; width: 34px; height: 200px;
       transform: translate(-50%, -300px);
@@ -140,7 +137,6 @@
       border: 2px solid rgba(200,180,140,0.5); opacity: 0; pointer-events: none; z-index: 2;
     }
 
-    /* Intro Text */
     .intro-text {
       font-family: var(--font-heading); color: var(--gold);
       font-size: 2.2rem; margin-top: 10px; opacity: 0; text-align: center; letter-spacing: 2px; z-index: 20; position: relative;
@@ -167,7 +163,7 @@
     /* --- 3. HERO --- */
     .hero {
       height: 90vh; min-height: 600px;
-      background: linear-gradient(to bottom, rgba(5,5,5,0.3), var(--bg-dark)), url('https://images.unsplash.com/photo-1559737558-2f5a35f4523b?q=80&w=1000&auto=format&fit=crop') center/cover;
+      background: linear-gradient(to bottom, rgba(5,5,5,0.3), var(--bg-dark)), url('hero-bg.jpg') center/cover;
       display: flex; flex-direction: column; justify-content: flex-end; align-items: center;
       text-align: center; padding: 40px 20px;
     }
@@ -197,12 +193,13 @@
     .video-card {
       flex: 0 0 220px; height: 380px; border-radius: 16px; overflow: hidden;
       scroll-snap-align: center; position: relative; border: 1px solid rgba(212, 175, 55, 0.3);
+      background: var(--bg-card);
     }
     .video-card video { width: 100%; height: 100%; object-fit: cover; }
     .video-label {
       position: absolute; bottom: 15px; left: 15px; right: 15px;
       background: rgba(0,0,0,0.6); backdrop-filter: blur(5px); color: white;
-      padding: 8px; border-radius: 8px; font-size: 0.8rem; text-align: center;
+      padding: 8px; border-radius: 8px; font-size: 0.8rem; text-align: center; pointer-events: none;
     }
 
     /* --- 5. MENU SECTION --- */
@@ -247,15 +244,14 @@
     }
     .add-btn:hover { background: var(--gold); color: var(--bg-dark); }
 
-    /* --- 6. ABOUT / HOURS --- */
-    .about-section { padding: 60px 20px; max-width: 600px; margin: 0 auto; text-align: center; border-top: 1px solid rgba(212, 175, 55, 0.1); }
-    .about-text { font-family: var(--font-heading); font-style: italic; color: var(--gold-light); font-size: 1.3rem; line-height: 1.6; margin-bottom: 40px; }
-    .hours-box { background: var(--bg-card); border: 1px solid rgba(212, 175, 55, 0.2); padding: 25px; border-radius: 16px; text-align: left; }
-    .hours-box h3 { color: var(--gold); font-family: var(--font-heading); font-size: 1.5rem; margin-bottom: 20px; text-align: center; }
-    .hours-row { display: flex; justify-content: space-between; gap: 30px; margin-bottom: 12px; font-size: 0.95rem; border-bottom: 1px dashed rgba(212, 175, 55, 0.2); padding-bottom: 12px; }
-    .hours-row:last-child { border: none; margin-bottom: 0; padding-bottom: 0; }
-    .hours-row span:first-child { color: var(--text-muted); }
-    .hours-row span:last-child { color: var(--gold-light); font-weight: 500; }
+    /* --- 6. LOCATION & HOURS (NEW SECTION) --- */
+    .location-section { padding: 60px 20px; max-width: 600px; margin: 0 auto; text-align: center; border-top: 1px solid rgba(212, 175, 55, 0.1); }
+    .location-section h2 { font-family: var(--font-heading); color: var(--gold); font-size: 2rem; margin-bottom: 20px; }
+    .info-box { background: var(--bg-card); border: 1px solid rgba(212, 175, 55, 0.2); padding: 25px; border-radius: 16px; text-align: left; margin-bottom: 20px; }
+    .info-box h3 { color: var(--gold); font-family: var(--font-heading); font-size: 1.3rem; margin-bottom: 10px; display: flex; align-items: center; gap: 10px; }
+    .info-box p { color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; }
+    .map-btn { display: inline-flex; align-items: center; gap: 8px; background: transparent; border: 1px solid var(--gold); color: var(--gold); padding: 12px 25px; border-radius: 30px; text-decoration: none; font-size: 0.9rem; font-weight: 600; margin-top: 15px; transition: var(--transition); }
+    .map-btn:hover { background: var(--gold); color: var(--bg-dark); }
 
     /* --- 7. FOOTER --- */
     footer {
@@ -327,6 +323,11 @@
     }
     .form-group input:focus, .form-group select:focus { outline: none; border-color: var(--gold); }
     
+    .pickup-notice {
+      display: none; background: rgba(212, 175, 55, 0.1); border-left: 3px solid var(--gold);
+      color: var(--gold-light); padding: 12px; border-radius: 6px; font-size: 0.85rem; margin-top: 5px;
+    }
+
     .whatsapp-btn {
       background: #25D366; color: white; border: none; padding: 18px;
       border-radius: 12px; font-weight: 700; font-size: 1rem; cursor: pointer;
@@ -376,15 +377,15 @@
     <h2 class="section-title">Happy Clients</h2>
     <div class="video-scroll">
       <div class="video-card">
-        <video src="https://assets.mixkit.co/videos/preview/mixkit-woman-eating-a-delicious-burger-42047-large.mp4" autoplay loop muted playsinline></video>
+        <video src="video1.mp4" controls preload="metadata" playsinline></video>
         <div class="video-label">"The best prawns in Harare!"</div>
       </div>
       <div class="video-card">
-        <video src="https://assets.mixkit.co/videos/preview/mixkit-man-eating-a-pizza-and-looking-at-the-camera-42046-large.mp4" autoplay loop muted playsinline></video>
+        <video src="video2.mp4" controls preload="metadata" playsinline></video>
         <div class="video-label">"That hot sauce is unreal 🔥"</div>
       </div>
       <div class="video-card">
-        <video src="https://assets.mixkit.co/videos/preview/mixkit-hands-of-a-person-eating-a-tasty-burger-42045-large.mp4" autoplay loop muted playsinline></video>
+        <video src="video3.mp4" controls preload="metadata" playsinline></video>
         <div class="video-label">"Ordering this every Friday!"</div>
       </div>
     </div>
@@ -401,7 +402,7 @@
     <div class="menu-grid">
       
       <div class="menu-card">
-        <img src="https://images.unsplash.com/photo-1627042633145-b780d842ba45?q=80&w=800&auto=format&fit=crop" alt="Crayfish & Prawns" class="menu-img">
+        <img src="prawns.jpg" alt="Crayfish & Prawns" class="menu-img">
         <div class="card-body">
           <div class="card-header">
             <span class="card-title">Crayfish & Prawns Boil</span>
@@ -417,7 +418,7 @@
       </div>
 
       <div class="menu-card">
-        <img src="https://images.unsplash.com/photo-1551248429-40975aa4de74?q=80&w=800&auto=format&fit=crop" alt="Crayfish Boil" class="menu-img">
+        <img src="crayfish.jpg" alt="Crayfish Boil" class="menu-img">
         <div class="card-body">
           <div class="card-header">
             <span class="card-title">Crayfish Boil</span>
@@ -433,7 +434,7 @@
       </div>
 
       <div class="menu-card">
-        <img src="https://images.unsplash.com/photo-1565680018434-b513d5e5fd47?q=80&w=800&auto=format&fit=crop" alt="Prawn Boil" class="menu-img">
+        <img src="prawn-boil.jpg" alt="Prawn Boil" class="menu-img">
         <div class="card-body">
           <div class="card-header">
             <span class="card-title">Prawn Boil</span>
@@ -448,18 +449,53 @@
         </div>
       </div>
 
+      <div class="menu-card">
+        <img src="https://images.unsplash.com/photo-1603133872878-684f208fb84b?q=80&w=800&auto=format&fit=crop" alt="Fried Rice" class="menu-img">
+        <div class="card-body">
+          <div class="card-header">
+            <span class="card-title">Fried Rice</span>
+            <span class="card-price">$4</span>
+          </div>
+          <p class="card-desc">Additional side of our signature fried rice.</p>
+          <button class="add-btn" onclick="addToCart('Fried Rice', 4, 'Side')">Add to Order</button>
+        </div>
+      </div>
+
+      <div class="menu-card">
+        <img src="rice.jpg" alt="Plain Rice" class="menu-img">
+        <div class="card-body">
+          <div class="card-header">
+            <span class="card-title">Plain Rice</span>
+            <span class="card-price">$2</span>
+          </div>
+          <p class="card-desc">Additional side of steamed white rice.</p>
+          <button class="add-btn" onclick="addToCart('Plain Rice', 2, 'Side')">Add to Order</button>
+        </div>
+      </div>
+
     </div>
   </section>
 
-  <!-- 6. ABOUT & HOURS -->
-  <section class="about-section">
-    <p class="about-text">"Our food is made with love and the flavors will keep bringing you back for more."</p>
+  <!-- 6. LOCATION & HOURS (NEW SECTION) -->
+  <section class="location-section">
+    <h2>Find Us & Order</h2>
     
-    <div class="hours-box">
-      <h3>Operating Hours</h3>
-      <div class="hours-row"><span>Monday</span><span style="color: var(--red-accent);">CLOSED</span></div>
-      <div class="hours-row"><span>Tuesday - Saturday</span><span>11am - 6pm</span></div>
-      <div class="hours-row"><span>Sunday</span><span>1pm - 6pm</span></div>
+    <div class="info-box">
+      <h3><i class="fas fa-map-marker-alt" style="color: var(--gold);"></i> Collections</h3>
+      <p><strong>5 Broseley Close, Avonlea</strong></p>
+      <a href="https://maps.google.com/?q=5+Broseley+Close+Avonlea+Harare" target="_blank" class="map-btn"><i class="fas fa-location-arrow"></i> Open in Google Maps</a>
+    </div>
+
+    <div class="info-box">
+      <h3><i class="fas fa-motorcycle" style="color: var(--gold);"></i> Deliveries</h3>
+      <p>We deliver to your door! <strong>Delivery is available at a fee</strong> depending on your location. Select "Delivery" at checkout for pricing.</p>
+    </div>
+
+    <div class="info-box">
+      <h3><i class="fas fa-clock" style="color: var(--gold);"></i> Operating Hours</h3>
+      <div class="hours-row" style="display: flex; justify-content: space-between; margin-bottom: 8px; color: var(--text-muted);"><span>Monday</span><span style="color: var(--red-accent);">CLOSED</span></div>
+      <div class="hours-row" style="display: flex; justify-content: space-between; margin-bottom: 8px; color: var(--text-muted);"><span>Tuesday - Saturday</span><span style="color: var(--gold-light);">11am - 6pm</span></div>
+      <div class="hours-row" style="display: flex; justify-content: space-between; color: var(--text-muted);"><span>Sunday</span><span style="color: var(--gold-light);">1pm - 6pm</span></div>
     </div>
   </section>
 
@@ -476,11 +512,10 @@
 
     <div class="footer-links">
       <a href="#menu">Menu</a>
-      <a href="#">Delivery Info</a>
       <a href="https://wa.me/263714296550">Contact</a>
     </div>
 
-    <p class="footer-copy">&copy; 2026 Treshah's Cozy Cookhouse. Built by <span></span> powered at Digital Dynamo Lab.</p>
+    <p class="footer-copy">&copy; 2026 Treshah's Cozy Cookhouse. <br>powered by Digital Dynamo Lab.</p>
   </footer>
 
   <!-- 8. FLOATING CART BAR -->
@@ -515,11 +550,15 @@
         </div>
         <div class="form-group">
           <label>Delivery Method</label>
-          <select id="delivery-method" required>
-            <option value="Pickup">Pickup (Free)</option>
+          <select id="delivery-method" required onchange="togglePickupNotice()">
+            <option value="Pickup">Pickup (Free) - 5 Broseley Close, Avonlea</option>
             <option value="Delivery (Within 10km - $4)">Delivery (Within 10km - $4)</option>
             <option value="Delivery (Outside 10km - Fee TBC)">Delivery (Outside 10km - Fee TBC)</option>
           </select>
+          <!-- Dynamic Notice for Pickup -->
+          <div id="pickup-notice" class="pickup-notice">
+            <strong>Collection Address:</strong><br>5 Broseley Close, Avonlea
+          </div>
         </div>
         <div class="form-group">
           <label>Delivery Address (If applicable)</label>
@@ -535,7 +574,7 @@
 
   <script>
     /* ============================================================
-       INTRO ANIMATION & KNIFE PHYSICS — HITS THE CRAB'S BACK
+       INTRO ANIMATION & KNIFE PHYSICS
        ============================================================ */
     const introScreen  = document.getElementById('intro-screen');
     const goldRing     = document.querySelector('.gold-ring');
@@ -547,9 +586,8 @@
     const shadow       = document.getElementById('shadow');
     const dust         = document.getElementById('dust');
 
-    // Knife geometry (must match CSS)
     const KNIFE_H     = 260;
-    const PIVOT_Y     = 0.85 * KNIFE_H;   // transform-origin = 50% 85%
+    const PIVOT_Y     = 0.85 * KNIFE_H;
 
     let state    = 'waiting';
     let angle    = 0;
@@ -561,32 +599,28 @@
     let targetX = 0;
     let targetY = 0;
 
-    // Helpers
     function rot(dx, dy, deg) {
       const a = deg * Math.PI / 180;
       const c = Math.cos(a), s = Math.sin(a);
       return { x: dx * c - dy * s, y: dx * s + dy * c };
     }
 
-    // Where should the blade tip land? = crab's upper-middle ("back")
     function getCrabHitPoint() {
       const r = crabIcon.getBoundingClientRect();
       return {
         x: r.left + r.width  * 0.5,
-        y: r.top  + r.height * 0.40   // 40% down from top = back/shell
+        y: r.top  + r.height * 0.40 
       };
     }
 
-    // Solve posX/posY so the rotated blade TIP lands exactly at (tx,ty)
     function solvePositionForTip(tx, ty, deg) {
       const w = knife.offsetWidth || 70;
-      const r = rot(0, -PIVOT_Y, deg);   // pivot -> tip offset, rotated
+      const r = rot(0, -PIVOT_Y, deg);
       const pivotX = tx - r.x;
       const pivotY = ty - r.y;
       return { x: pivotX - w / 2, y: pivotY - PIVOT_Y };
     }
 
-    // Where is the blade tip right now (world coords)?
     function currentTip() {
       const w = knife.offsetWidth || 70;
       const pivotX = posX + w / 2;
@@ -595,16 +629,13 @@
       return { x: pivotX + r.x, y: pivotY + r.y };
     }
 
-    // Kick off
     gsap.to(goldRing, {
       opacity: 1, scale: 1, duration: 0.8, ease: 'back.out(1.5)',
       onComplete: () => {
-        // Measure the crab AFTER the ring animation so layout is settled
         const hp = getCrabHitPoint();
         targetX = hp.x;
         targetY = hp.y;
 
-        // Start aligned above the crab so it falls straight into the back
         posX = targetX - 35;
         knife.style.left = posX + 'px';
 
@@ -636,7 +667,6 @@
       trail.style.opacity = 0.9;
       trail.style.transform = `translate(-50%, 0) rotate(${angle}deg)`;
 
-      // Has the TIP reached the crab's back?
       const tip = currentTip();
       if (tip.y >= targetY) {
         land();
@@ -649,7 +679,6 @@
       state = 'landed';
       trail.style.opacity = '0';
 
-      // Snap the knife so the tip is EXACTLY on the crab's back
       const snapped = solvePositionForTip(targetX, targetY, angle);
       posX = snapped.x;
       posY = snapped.y;
@@ -657,7 +686,6 @@
       knife.style.top  = posY + 'px';
       knife.style.transform = `rotate(${angle}deg)`;
 
-      // Crab reacts — jolt then pop
       gsap.to(crabIcon, {
         keyframes: [
           { scale: 1.25, rotation: -8, duration: 0.08 },
@@ -666,7 +694,6 @@
         ]
       });
 
-      // Impact visuals
       shadow.style.transition = 'opacity 300ms ease, transform 400ms cubic-bezier(.2,1.4,.4,1)';
       shadow.style.opacity = '0.8';
       shadow.style.transform = 'translate(-50%, -50%) scale(1)';
@@ -687,7 +714,6 @@
       spawnSparks(targetX, targetY);
       wobble();
 
-      // Reveal brand text, then slide the whole intro away
       setTimeout(() => {
         gsap.to(introText,    { opacity: 1, y: -10, duration: 0.8 });
         gsap.to(introSubtext, { opacity: 1, duration: 0.8 });
@@ -792,11 +818,23 @@
       btn.classList.add('active');
     }
 
+    /* --- PICKUP NOTICE LOGIC --- */
+    function togglePickupNotice() {
+      const method = document.getElementById('delivery-method').value;
+      const notice = document.getElementById('pickup-notice');
+      if (method === 'Pickup') {
+        notice.style.display = 'block';
+      } else {
+        notice.style.display = 'none';
+      }
+    }
+
     /* --- CART LOGIC --- */
     let cart = [];
 
     function openCart() {
       document.getElementById('cart-modal').classList.add('open');
+      togglePickupNotice(); // Check pickup notice when opening
     }
 
     document.getElementById('close-cart').addEventListener('click', () => {
@@ -861,10 +899,12 @@
       e.preventDefault();
       if (cart.length === 0) return alert("Please add items to your order first.");
 
-      const name = document.getElementById('cust-name').value;
-      const phone = document.getElementById('cust-phone').value;
+      const name = document.getElementById('cust-name').value.trim();
+      const phone = document.getElementById('cust-phone').value.trim();
       const deliveryMethod = document.getElementById('delivery-method').value;
-      const address = document.getElementById('cust-address').value;
+      const address = document.getElementById('cust-address').value.trim();
+
+      if (!name || !phone) return alert("Please fill in your name and phone number.");
 
       let message = `🦞 *NEW ORDER from Treshah's Website* 🦞\n\n`;
       message += `*Customer:* ${name}\n`;
@@ -890,7 +930,8 @@
       const waNumber = "263714296550"; 
       const encodedMessage = encodeURIComponent(message);
       const waURL = `https://wa.me/${waNumber}?text=${encodedMessage}`;
-      window.open(waURL, '_blank');
+      
+      window.location.href = waURL;
     });
   </script>
 </body>
